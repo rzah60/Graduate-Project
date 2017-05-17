@@ -75,14 +75,33 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\BoardManager.cs" />
-    <Compile Include="Assets\Scripts\GameManager.cs" />
-    <Compile Include="Assets\Scripts\Player.cs" />
-    <Compile Include="Assets\Scripts\Tile.cs" />
+    <ProjectReference Include="Graduate Project.Plugins.csproj">
+      <Project>{73AC6DDE-34A4-0721-779A-8AEE2320CEE0}</Project>
+      <Name>Graduate Project.Plugins</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\Scripts\Map.txt" />
+    <Compile Include="Assets\Scripts\BoardManager.cs" />
+    <Compile Include="Assets\Scripts\GUIElements.cs" />
+    <Compile Include="Assets\Scripts\GameManager.cs" />
+    <Compile Include="Assets\Scripts\MainMenu.cs" />
+    <Compile Include="Assets\Scripts\PathGenerate.cs" />
+    <Compile Include="Assets\Scripts\PathHighlight.cs" />
+    <Compile Include="Assets\Scripts\Player.cs" />
+    <Compile Include="Assets\Scripts\PlayerAttack.cs" />
+    <Compile Include="Assets\Scripts\Skeleton.cs" />
+    <Compile Include="Assets\Scripts\TargetFinder.cs" />
+    <Compile Include="Assets\Scripts\Thorgren.cs" />
+    <Compile Include="Assets\Scripts\ThorgrenAttack.cs" />
+    <Compile Include="Assets\Scripts\Tile.cs" />
+    <Compile Include="Assets\Scripts\TilePath.cs" />
+    <Compile Include="Assets\Scripts\Wraith.cs" />
+    <Compile Include="Assets\Scripts\WraithAttack.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\Resources\Map.txt" />
     <None Include="Assets\Sprites\Ardentryst-TilesAndObjects\license-ccby3up.txt" />
+    <None Include="Assets\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />

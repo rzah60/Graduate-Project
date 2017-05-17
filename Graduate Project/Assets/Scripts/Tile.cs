@@ -10,6 +10,10 @@ public class Tile : MonoBehaviour {
 
     public bool isWall = false;
 
+    public int movementCost = 1;
+    public bool occupied = false;
+    public bool highlighted = false;
+
     // Use this for initialization
     void Start() {
         generateNeighbors();
@@ -46,7 +50,24 @@ public class Tile : MonoBehaviour {
 
     void OnMouseDown()
     {
-        GameManager.instance.playerScript.players[0].move(this);
+        if (highlighted == true)
+        {
+            Player activePlayer = GameManager.instance.playerScript.players[0];
+            foreach(Player p in GameManager.instance.playerScript.players)
+            {
+                if( p.selected == true)
+                {
+                    activePlayer = p;
+                }
+            }
+            activePlayer.move(this);
+            foreach (Tile t in activePlayer.highlightedTiles)
+            {
+                t.highlighted = false;
+              t.GetComponent<SpriteRenderer>().color = Color.white;
+            }
+            activePlayer.highlightedTiles.Clear();  
+        }
     }
         // Update is called once per frame
     void Update () {

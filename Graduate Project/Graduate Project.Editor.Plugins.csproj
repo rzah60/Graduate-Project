@@ -127,11 +127,17 @@
       <Project>{73AC6DDE-34A4-0721-779A-8AEE2320CEE0}</Project>
       <Name>Graduate Project.Plugins</Name>
     </ProjectReference>
+    <ProjectReference Include="Graduate Project.csproj">
+      <Project>{951EAE9E-0A3A-D8B2-1EBC-BD17D17D9E30}</Project>
+      <Name>Graduate Project</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Standard Assets\Editor\CrossPlatformInput\CrossPlatformInputInitialize.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\Resources\Map.txt" />
+    <None Include="Assets\Sprites\Ardentryst-TilesAndObjects\license-ccby3up.txt" />
     <None Include="Assets\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

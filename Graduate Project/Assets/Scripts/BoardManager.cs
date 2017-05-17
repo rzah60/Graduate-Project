@@ -24,26 +24,52 @@ public class BoardManager : MonoBehaviour
 
     //public int columns = 10;
     //public int rows = 10;
-    public static string[][] boardPos = readFile("C:\\Users\\Reagan\\Documents\\Graduate Project\\Assets\\Scripts\\Map.txt");
+    //"C:\\Users\\Reagan\\Documents\\Graduate Project\\Assets\\Scripts\\Map.txt"
+    static string path = "C:\\Users\\Reagan\\Documents\\Graduate Project\\Assets\\Scripts\\Map.txt";
+    //static string path = Application.dataPath;
     public Tile[] groundTiles;
     public Tile[] wallTiles;
+    public static TextAsset mapFile;// = new TextAsset();
+    //string text = mapFile.text;
+    public static string[][] boardPos;// = readFile( );
 
     public Transform boardHolder;
-    public int boardSize = boardPos.Length;
-    public Tile[,] board = new Tile[boardPos[0].Length, boardPos.Length];
+    public int boardSize;// = boardPos.Length;
+    public Tile[,] board;// = new Tile[boardPos[0].Length, boardPos.Length];
 
     //private List<Vector3> gridPositions = new List<Vector3>();
-
-    private static string[][] readFile(string file)
+    /*void Awake()
     {
-        string text = System.IO.File.ReadAllText(file);
+        path = Resources.Load("Map") a
+    }*/
+
+    void Awake()
+    {
+        //On Awake load the Map.txt file from the Resources folder
+         mapFile = (TextAsset)Resources.Load("Map", typeof(TextAsset));
+
+        //read the text of Map.txt and store it in a 2D string array 
+         boardPos = readFile();
+        //get the size of the board
+         boardSize = boardPos.Length;
+        //Create a new board to hold the tiles
+         board = new Tile[boardPos[0].Length, boardPos.Length];
+    }
+
+    private static string[][] readFile( )
+    {
+        //get the text of the Map.txt file as a string
+        string text = mapFile.text;
+        //split the string by each new line to determine the amount of rows of text
         string[] lines = Regex.Split(text, "\r\n");
         int rows = lines.Length;
 
         string[][] levelBase = new string[rows][];
         for (int i = 0; i < lines.Length; i++)
         {
+            //split the lines on spaces to get each individual value
             string[] stringsOfLine = Regex.Split(lines[i], " ");
+            //populate the 2D array with the values
             levelBase[i] = stringsOfLine;
         }
         return levelBase;
@@ -123,7 +149,7 @@ public class BoardManager : MonoBehaviour
     }
 
 
-    public void SetupScene(int level)
+    public void SetupScene()
     {
         //Creates the walls and ground.
         BoardSetup();
